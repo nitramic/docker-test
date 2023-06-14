@@ -1,0 +1,29 @@
+services:
+  postgres:
+    container_name: postgres14
+    image: postgres:14-bullseye
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB} #optional (specify default database instead of $POSTGRES_DB)
+    ports:
+      - "5432:5432"
+    restart: always
+
+  
+app:
+    image: tomcat:9.0.76-jdk8-temurin-jammy
+    #command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 5432:5432
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+
+volumes:
+  zucchetti-infinity41:
+
+networks:
+  zucchetti-network:

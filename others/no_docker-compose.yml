@@ -1,0 +1,28 @@
+services:
+  app:
+    image: tomcat:9.0.76-jdk8-temurin-jammy
+    #command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 5432:5432
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+
+  mysql:
+    image: postgres:14-bullseye
+    volumes:
+      - zucchetti-infinity41
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+
+      MYSQL_DATABASE: todos
+
+volumes:
+  zucchetti-infinity41:
