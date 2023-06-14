@@ -1,0 +1,13 @@
+version: '2'
+app:
+  tomcat:
+    image: tomcat:9.0.76-jdk8-temurin-jammy
+    restart: on-failure:3
+    #command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 8080:8080
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
