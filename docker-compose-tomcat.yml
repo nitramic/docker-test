@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+      tomcat:
+        image: tomcat:9.0.76-jdk8-temurin-jammy
+        restart: on-failure:3
+        ports:
+             - '8080:8080'
+        volumes:
+        - './configs/tomcat-users.xml:/opt/bitnami/tomcat/conf/tomcat-users.xml:rw'
+        - './configs/context.xml:/usr/local/tomcat/conf/Catalina/localhost/manager.xml:rw'
+        - './configs/context.xml:/usr/local/tomcat/conf/Catalina/localhost/host-manager.xml:rw'
+#volumes:
+#tomcat_data:
+driver: local
