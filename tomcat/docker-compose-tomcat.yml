@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+      tomcat:
+        image: tomcat:9.0.76-jdk8-temurin-jammy
+        restart: on-failure:3
+        ports:
+             - '8080:8080'
+        volumes:
+        - ./configs:/configs
