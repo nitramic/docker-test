@@ -29,3 +29,5 @@ services:
 #   backend:
 # hacer los volumenes para los cambios persistentes
 # no esta copiando los files para habilitar el acceso a tomcat
+#1- El montaje del volumen en /mnt funciona, solo que no hace la copia.
+#2- El cp es la solucion para esta version de Tomcat, solo que no lo ejecuta o cuelga el contenedro, revisar si como se puede hacer, el dockerfile no le da bolo o no ejecuta
