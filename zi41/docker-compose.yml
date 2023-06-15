@@ -5,7 +5,11 @@ services:
     restart: on-failure:3
     ports:
       - '8080:8080'
-    
+    volumes:
+      - ./tm/:/mnt/
+#    command: bash -c "cp -avT $CATALINA_HOME/webapps.dist/manager $CATALINA_HOME/webapps/manager"
+  
+   
   postgres:
     container_name: postgres_zi
     image: postgres:14-bullseye

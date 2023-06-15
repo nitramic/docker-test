@@ -1,7 +1,7 @@
-FROM tomcat:9.0.76-jdk8-temurin-jammy
-COPY ./tm/tomcat-users.xml /conf/
-COPY ./tm/manager.xml conf/Catalina/localhost/
-COPY ./tm/host-manager.xml conf/Catalina/localhost/host-manager.xml
+FROM tomcat_zi:9.0.76-jdk8-temurin-jammy
+COPY ./mnt/tomcat-users.xml $CATALINA_HOME/conf/
+COPY ./mnt/manager.xml $CATALINA_HOME/conf/Catalina/localhost/
+COPY ./mnt/host-manager.xml $CATALINA_HOME/conf/Catalina/localhost/host-manager.xml
 
-FROM postgres:14-bullseye
+FROM postgres_zi:14-bullseye
 COPY ./pg/init.sql /docker-entrypoint-initdb.d/

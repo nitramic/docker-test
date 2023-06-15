@@ -1,10 +1,7 @@
-version: '2'
-
-services:
-      tomcat:
-        image: tomcat:9.0.76-jdk8-temurin-jammy
-        restart: on-failure:3
-        ports:
-             - '8080:8080'
-        volumes:
-        - ./configs:/configs
+tomcat:
+  container_name: tomcat_9jdk
+  image: tomcat:9.0.76-jdk8-temurin-jammy
+  restart: on-failure:3
+  command: cp -avT $CATALINA_HOME/webapps.dist/manager $CATALINA_HOME/webapps/manager
+  ports:
+  - '8080:8080'
