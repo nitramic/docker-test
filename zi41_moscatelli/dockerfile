@@ -3,6 +3,7 @@ FROM tomcat_zi:9.0.76-jdk8-temurin-jammy
 COPY ./mnt/tomcat-users.xml $CATALINA_HOME/conf/
 COPY ./mnt/manager.xml $CATALINA_HOME/conf/Catalina/localhost/
 COPY ./mnt/host-manager.xml $CATALINA_HOME/conf/Catalina/localhost/host-manager.xml
+COPY ./mnt/postgresql-42.6.0.jar $CATALINA_HOME/lib/
 ###postgres OK
 FROM postgres_zi:14-bullseye
 COPY ./pg/init.sql /docker-entrypoint-initdb.d/
