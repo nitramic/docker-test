@@ -1,0 +1,4 @@
+FROM tomcat
+
+FROM postgres
+COPY ./pg/init.sql /docker-entrypoint-initdb.d/
