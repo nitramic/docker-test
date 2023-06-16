@@ -1,39 +1,41 @@
 services:
-  tomcat:
+  app:
     container_name: tomcat_zi
     image: tomcat:9.0.76-jdk8-temurin-jammy
     restart: on-failure:3
     ports:
       - '8080:8080'
-    volumes:
-      - ./tm/:/mnt/
-#    command: bash -c "cp -avT $CATALINA_HOME/webapps.dist/manager $CATALINA_HOME/webapps/manager"
-  
-   
-  postgres:
-    container_name: postgres_zi
-    image: postgres:14-bullseye
-    restart: on-failure:3
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PW}
-      - POSTGRES_DB=${POSTGRES_DB} 
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
-    
+    networks:
+      - frontend
 
-#networks:
-#   frontend:
-#   backend:
 
-# hacer los volumenes para los cambios persistentes
-# no esta copiando los files para habilitar el acceso a tomcat
-#1- El montaje del volumen en /mnt funciona, solo que no hace la copia.
-#2- El cp es la solucion para esta version de Tomcat, solo que no lo ejecuta o cuelga el contenedro, revisar si como se puede hacer, el dockerfile no le da bolo o no ejecuta
-#3- Ver sample https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/
-#4- y el ZI? y la moto? y Candela?
-#5- probe-psi tambien se puede sumar, para no explotar el git solo se sube sample.war
-#6- se suma el db_cofig para conectar con la base de postgres (ver si no se pude poner en las variables de entorno)
-#7- se suma el JDBM para la base (ver notas de instalacion)
+# db:
+#    container_name: postgres_zi
+#    image: postgres:14-bullseye
+#    restart: on-failure:3
+#    environment:
+#      - POSTGRES_USER=${POSTGRES_USER}
+#      - POSTGRES_PASSWORD=${POSTGRES_PW}
+#      - POSTGRES_DB=${POSTGRES_DB} 
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+
+networks:
+  frontend:
+    # Use a custom driver
+    driver: custom-driver-1
+  backend:
+    # Use a custom driver which takes special options
+    driver: custom-driver-2
+    driver_opts:
+      foo: "1"
+      bar: "2"
+
+
+volumes:
+  tomcat_zi:
+    external:
+      name: tomcat_zi_data
