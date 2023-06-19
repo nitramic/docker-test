@@ -11,8 +11,8 @@ services:
 #      - frontend
     volumes:
       - ./tm/:/mnt/
-#      - tomcat_data
-
+      - tomcat_data:/usr/local/tomcat/webapps/:rw
+    #command: bash -c "cp -avT $CATALINA_HOME/webapps.dist/manager $CATALINA_HOME/webapps/manager"
 
   db:
     container_name: postgres_zi
@@ -26,7 +26,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data:rw
-      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
+#      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
 #      - ./pg/data:/var/lib/postgresql/data
 
 
@@ -46,4 +46,4 @@ volumes:
   tomcat_data:
     external: false
   postgres_data:
-    external: false
+   external: false
