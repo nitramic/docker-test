@@ -1,0 +1,13 @@
+move docekerfiles to make dockerbuild
+EJ sudo docker build -t zi41postgres:v01 .
+
+docker build -t infoservicenet/zucchetti:pgv01 .
+
+
+docker push infoservicenet/zucchetti:pgv01 .
+docker image push infoservicenet/zucchetti:tmv01
+
+docker compose up &
+docker compose down --volumes --rmi local
+
+Ver como hacer que el infinity quede aislado

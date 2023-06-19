@@ -1,7 +1,7 @@
 services:
   app:
     container_name: tomcat_zi
-    image: tomcat:9.0.76-jdk8-temurin-jammy
+    image: infoservicenet/zucchetti:zi41tcv01
     depends_on:
       - db
     restart: on-failure:3
@@ -10,13 +10,14 @@ services:
 #    networks:
 #      - frontend
     volumes:
-      - ./tm/:/mnt/
-      - tomcat_data:/usr/local/tomcat/webapps/:rw
-    #command: bash -c "cp -avT $CATALINA_HOME/webapps.dist/manager $CATALINA_HOME/webapps/manager"
+      - tomcat_data:/usr/local/tomcat/webapps:rw
+#NOTA: Ver si se puede hacer en un solo volumen la data del zucchetti
+#     Junto con la data del conector del BD, la libreria y la config del tomcat
+#     Para posibles futuros Debugs      
 
   db:
     container_name: postgres_zi
-    image: postgres:14-bullseye
+    image: infoservicenet/zucchetti:zi41pgv01
     restart: on-failure:3
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -26,8 +27,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data:rw
-#      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
-#      - ./pg/data:/var/lib/postgresql/data
 
 
 #networks:
