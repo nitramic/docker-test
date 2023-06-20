@@ -11,3 +11,5 @@ docker compose up &
 docker compose down --volumes --rmi local
 
 Ver como hacer que el infinity quede aislado
+
+Creado dockerfile para dbeaver --> cloudbeaver

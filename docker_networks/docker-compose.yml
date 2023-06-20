@@ -1,0 +1,37 @@
+services:
+  app:
+    container_name: app_container
+    image: ubuntu:22.04
+    tty: true
+    depends_on:
+      - db
+    restart: on-failure:3
+    ports:
+      - "23:22"
+    networks:
+      - frontend
+      - backend
+    links:
+      - "db:database"
+
+  db:
+    container_name: db_container
+    image: ubuntu:22.04
+    tty: true
+    restart: on-failure:3
+    ports:
+      - "5432:22"
+    networks:
+      - backend      
+    links:
+      - "app:application"
+
+
+networks:
+  frontend:
+    name: zi_frontend
+  backend:
+    name: zi_backend  
+    internal: true
+
+#Esto es un test, funciona mejor con el docker net que es un docker con postgres y pgamdin

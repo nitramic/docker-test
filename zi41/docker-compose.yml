@@ -1,22 +1,20 @@
 services:
   app:
-    container_name: tomcat_zi
+    container_name: zi_tomcat
     image: infoservicenet/zucchetti:zi41tcv01
     depends_on:
       - db
     restart: on-failure:3
     ports:
       - '8080:8080'
-#    networks:
-#      - frontend
+    networks:
+      - frontend
+      - backend
     volumes:
       - tomcat_data:/usr/local/tomcat/webapps:rw
-#NOTA: Ver si se puede hacer en un solo volumen la data del zucchetti
-#     Junto con la data del conector del BD, la libreria y la config del tomcat
-#     Para posibles futuros Debugs      
 
   db:
-    container_name: postgres_zi
+    container_name: zi_postgres
     image: infoservicenet/zucchetti:zi41pgv01
     restart: on-failure:3
     environment:
@@ -25,20 +23,18 @@ services:
       - POSTGRES_DB=${POSTGRES_DB} 
     ports:
       - "5432:5432"
+    networks:
+      - backend      
     volumes:
       - postgres_data:/var/lib/postgresql/data:rw
 
 
-#networks:
-#  frontend:
-#    # Use a custom driver
-#    driver: custom-driver-1
-#  backend:
-#    # Use a custom driver which takes special options
-#    driver: custom-driver-2
-#    driver_opts:
-#      foo: "1"
-#      bar: "2"
+networks:
+  frontend:
+    name: zi_frontend
+  backend:
+    name: zi_backend  
+    internal: true
 
 
 volumes:

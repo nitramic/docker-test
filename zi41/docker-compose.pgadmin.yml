@@ -1,0 +1,26 @@
+services:
+  dbcontrol:
+    container_name: zi_pgamdin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+        - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mcima@infoservicenet.it
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - frontend
+      - backend
+
+volumes:
+  pgadmin-data:
+
+networks:
+  frontend:
+    name: zi_frontend
+    external: true
+  backend:
+    name: zi_backend  
+    external: true
