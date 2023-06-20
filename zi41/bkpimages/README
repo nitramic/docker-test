@@ -1,0 +1,3 @@
+command
+$ docker save infoservicenet/zucchetti:zi41pgv01 | gzip > zi41pgv01.tar.gz
+$ docker save infoservicenet/zucchetti:zi41tcv01 | gzip > zi41tcv01.tar.gz

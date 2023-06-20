@@ -1,7 +1,7 @@
 #### IMPOSTAZIONI DBCONFIG PER COPIA DB TRA DUE ISTANZE ####
 #
 # CONFIGURAZIONE DATABASE DI DESTINAZIONE (POSTGRESQL)
-JDBCConnectionURL.1=jdbc:postgresql://192.168.30.23:5432/ahrw_moscat
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/zucchetti
 JDBCDriver.1=org.postgresql.Driver
 UserName.1=postgres
 Password.1=mysecretpassword
