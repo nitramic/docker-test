@@ -8,3 +8,4 @@ COPY ./tm/manager.xml $CATALINA_HOME/conf/Catalina/localhost/manager.xml
 COPY ./tm/host-manager.xml $CATALINA_HOME/conf/Catalina/localhost/host-manager.xml
 COPY ./tm/postgresql-42.6.0.jar $CATALINA_HOME/lib/postgresql-42.6.0.jar
 COPY ./tm/AHRW41.MOSCATELLI $CATALINA_HOME/webapps/AHRW41.MOSCATELLI
+COPY ./tm/DBConfig $CATALINA_HOME/webapps/AHRW41.MOSCATELLI/WEB-INF/classes/DBConfig
