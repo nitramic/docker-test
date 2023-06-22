@@ -40,3 +40,6 @@ curl -X GET https://myregistry:5000/v2/_catalog > {"repositories":["redis","ubun
 ## EJ:
 $ curl -X GET http://192.168.30.23:5000/v2/_catalog
 {"repositories":["my-ubuntu","zucchetti"]}
+
+# Para que funcione
+Hacer el docker compose, sumar acceso a la base, restore de la base y reload desde el tomcat manager del zi.
