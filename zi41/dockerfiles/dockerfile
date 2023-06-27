@@ -1,5 +1,7 @@
+LABEL authors="MC"
 FROM postgres:14-bullseye AS db
 COPY  ./pg/init.sql /docker-entrypoint-initdb.d/init.sql
+
 
 FROM tomcat:9.0.76-jdk8-temurin-jammy AS app
 RUN bash -c "cp -avT /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager"
