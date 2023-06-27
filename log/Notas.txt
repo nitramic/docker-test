@@ -1,0 +1,25 @@
+En:
+/opt/tomcat/conf/tomcat-users.xml
+modificacion para el tomcat users
+
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-script"/>
+<role rolename="manager-status"/>
+<user username="infoservice" password="Info2023!" roles="manager-gui,admin-gui,admin-script,manager-jmx,manager-script,manager-status"/>
+
+
+Y en:
+/opt/tomcat/webapps/host-manager/META-INF/context.xml
+/opt/tomcat/webapps/manager/META-INF/context.xml
+
+modificacion para files context.xml
+<Context antiResourceLocking="false" privileged="true" > 
+<!-- 
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve" 
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> 
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/> 
+--> 
+</Context>

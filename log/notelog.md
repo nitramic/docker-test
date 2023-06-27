@@ -10,3 +10,5 @@
 # 7- se suma el JDBM para la base (ver notas de instalacion)
 
 ## 10:Falta crear la base en postgres
+
+# Ver Archivo notas
