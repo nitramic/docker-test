@@ -42,6 +42,11 @@
   <user username="role1" password="<must-be-changed>" roles="role1"/>
 -->
 <role rolename="manager-gui"/>
-<user username="tomcat" password="s3cret" roles="manager-gui"/>
-
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-script"/>
+<role rolename="manager-status"/>
+<user username="infoservice" password="Info2023!" roles="manager-gui,admin-gui,admin-script,manager-jmx,manager-sc
+ript,manager-status"/>
 </tomcat-users>

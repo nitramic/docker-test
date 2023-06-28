@@ -12,3 +12,10 @@
 ## 10:Falta crear la base en postgres
 
 # Ver Archivo notas
+
+#### TESTING ####
+hacer imagen de tomcat version anterior (9.0.75) para tests
+
+tomcat:9.0.75-jdk8-temurin-jammy
+
+https://github.com/docker-library/tomcat/blob/ 87d54ab5dee907d4e0dd02b3df5d8c0542bac1b2/9.0/jdk8/temurin-jammy/Dockerfile
