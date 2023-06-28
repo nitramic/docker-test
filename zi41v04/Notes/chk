@@ -2,14 +2,36 @@
 $ docker save infoservicenet/zucchetti:zi41pgv01 | gzip > zi41pgv01.tar.gz
 $ docker save infoservicenet/zucchetti:zi41tcv01 | gzip > zi41tcv01.tar.gz
 
-Para hacer pull y push
-
-docker pull 
 
 
 # Para hacer correr nuestro entorno con nuestras configs realizadas en el docker file
-sudo docker build --target app -t infoservicenet/zucchetti:tmv03 .
+sudo docker build --target db -t infoservicenet/zucchetti:pgv04 .
+sudo docker build --target app -t infoservicenet/zucchetti:tmv04 .
 
+# Luego crearles el tag para poder subirlos (en este caso a mi registry server)
+docker tag infoservicenet/zucchetti:tmv04 localhost:5000/zucchetti:tmv04
+docker tag infoservicenet/zucchetti:pgv04 localhost:5000/zucchetti:pgv04
+
+#Listar las imagenenes y hacer el push
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+infoservicenet/zucchetti   tmv04     39589d8cf48b   30 minutes ago   2.02GB
+localhost:5000/zucchetti   tmv04     39589d8cf48b   30 minutes ago   2.02GB
+infoservicenet/zucchetti   pgv04     9d47a14b9183   8 days ago       377MB
+localhost:5000/zucchetti   pgv04     9d47a14b9183   8 days ago       377MB
+registry                   2         4bb5ea59f8e0   13 days ago      24MB
+portainer/portainer-ce     latest    3d18fe6d6805   5 weeks ago      273MB
+
+
+Para hacer pull y push
+docker push localhost:5000/zucchetti:pgv04
+docker push localhost:5000/zucchetti:tmv04
+docker push infoservicenet/zucchetti:pgv04
+docker push infoservicenet/zucchetti:tmv04
+
+
+#Docker compose
+docker compose -f docker-compose.v04.local.yml up
 
 # Para verificar si esta corriendo el compose dentro de nuestra instalacion
 

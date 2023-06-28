@@ -1,7 +1,7 @@
 services:
   app:
     container_name: zi_tomcat
-    image: tomcat:9.0.75-jdk8-temurin-jammy
+    image: infoservicenet/zucchetti:tmv04
     depends_on:
       - db
     restart: on-failure:3
@@ -15,7 +15,7 @@ services:
 
   db:
     container_name: zi_postgres
-    image: postgres:14-bullseye
+    image: infoservicenet/zucchetti:pgv04
     restart: on-failure:3
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
