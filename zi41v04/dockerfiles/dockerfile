@@ -3,7 +3,7 @@ LABEL authors="MC"
 COPY  ./pg/init.sql /docker-entrypoint-initdb.d/init.sql
 
 
-FROM tomcat:9.0.76-jdk8-temurin-jammy AS app
+FROM tomcat:9.0.75-jdk8-temurin-jammy AS app
 LABEL authors="MC"
 RUN bash -c "cp -avT /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager"
 RUN bash -c "apt install ttf-mscorefonts-installer"

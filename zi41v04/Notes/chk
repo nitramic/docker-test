@@ -1,0 +1,33 @@
+# Para hacer bkp de las imagenes de docker y poder exportar el contenedor
+$ docker save infoservicenet/zucchetti:zi41pgv01 | gzip > zi41pgv01.tar.gz
+$ docker save infoservicenet/zucchetti:zi41tcv01 | gzip > zi41tcv01.tar.gz
+
+Para hacer pull y push
+
+docker pull 
+
+
+# Para hacer correr nuestro entorno con nuestras configs realizadas en el docker file
+sudo docker build --target app -t infoservicenet/zucchetti:tmv03 .
+
+
+# Para verificar si esta corriendo el compose dentro de nuestra instalacion
+
+docker compose ls
+NAME                STATUS              CONFIG FILES
+zi41                running(2)          /home/user/compose/zi41/docker-compose.v03.yml
+
+# docker compose -f /home/user/compose/zi41/docker-compose.v03.yml ps
+NAME                IMAGE                            COMMAND                  SERVICE             CREATED             STATUS              PORTS
+zi_postgres         localhost:5000/zucchetti:pgv03   "docker-entrypoint.s…"   db                  6 days ago          Up 6 days           0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+zi_tomcat           localhost:5000/zucchetti:tmv03   "catalina.sh run"        app                 6 days ago          Up 6 days           0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+
+# Para borrar todos los datos del entorno generado
+$ docker compose -f docker-compose.v03.yml down --volumes --rmi local
+[+] Running 6/6
+ ✔ Container zi_tomcat        Removed                                                                                                                                                                                                   2.3s
+ ✔ Container zi_postgres      Removed                                                                                                                                                                                                   0.2s
+ ✔ Volume zi41_tomcat_data    Removed                                                                                                                                                                                                   1.3s
+ ✔ Volume zi41_postgres_data  Removed                                                                                                                                                                                                   1.7s
+ ✔ Network zi_frontend        Removed                                                                                                                                                                                                   0.3s
+ ✔ Network zi_backend         Removed      
