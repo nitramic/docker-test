@@ -1,9 +1,9 @@
 #### IMPOSTAZIONI DBCONFIG PER COPIA DB TRA DUE ISTANZE ####
 # CONFIGURAZIONE DATABASE DI DESTINAZIONE (POSTGRESQL)
-JDBCConnectionURL.1=jdbc:postgresql://db:5432/zucchetti
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/demo
 JDBCDriver.1=org.postgresql.Driver
 UserName.1=postgres
-Password.1=mysecretpassword
+Password.1=Info2023!
 Instance.1=SERVLET1
 DefaultUserTimeout=3600
 #

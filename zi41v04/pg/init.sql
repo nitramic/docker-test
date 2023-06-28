@@ -7,7 +7,6 @@
 -- # Connections num: 300
 -- # Data Storage: ssd
 
-
 ALTER SYSTEM SET
  max_connections = '300';
 ALTER SYSTEM SET
@@ -76,4 +75,4 @@ CREATE ROLE mesuser WITH
 	LOGIN 
 	NOREPLICATION 
 	NOBYPASSRLS 
-	CONNECTION LIMIT -1; 
+	CONNECTION LIMIT -1;

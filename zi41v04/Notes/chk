@@ -41,8 +41,8 @@ zi41                running(2)          /home/user/compose/zi41/docker-compose.v
 
 # docker compose -f /home/user/compose/zi41/docker-compose.v03.yml ps
 NAME                IMAGE                            COMMAND                  SERVICE             CREATED             STATUS              PORTS
-zi_postgres         localhost:5000/zucchetti:pgv03   "docker-entrypoint.s…"   db                  6 days ago          Up 6 days           0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
-zi_tomcat           localhost:5000/zucchetti:tmv03   "catalina.sh run"        app                 6 days ago          Up 6 days           0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+zi_postgres         localhost:5000/zucchetti:pgv04   "docker-entrypoint.s…"   db                  6 days ago          Up 6 days           0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+zi_tomcat           localhost:5000/zucchetti:tmv04   "catalina.sh run"        app                 6 days ago          Up 6 days           0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
 
 # Para borrar todos los datos del entorno generado
 $ docker compose -f docker-compose.v03.yml down --volumes --rmi local
@@ -53,3 +53,8 @@ $ docker compose -f docker-compose.v03.yml down --volumes --rmi local
  ✔ Volume zi41_postgres_data  Removed                                                                                                                                                                                                   1.7s
  ✔ Network zi_frontend        Removed                                                                                                                                                                                                   0.3s
  ✔ Network zi_backend         Removed      
+
+ # Para permitir una conexion de la db ya que esta desde el compose solo se conecta con la app en su propia red
+ # Esto suele ser util para administrar o hacer bkps/dumps desde afuera
+ # EN EL EJEMPLO DEBAJO ESTAMOS CONECTADO A LA RED FRONTEND (que tiene acceso desde fuera) AL SERVER POSTGRES, PARA VERIFICAR CON HERRAMIENTAS DEL TIPO PGADMIN O DBEAVER-CE 
+ docker network connect zi_frontend zi_postgres

@@ -23,5 +23,5 @@ https://github.com/docker-library/tomcat/blob/ 87d54ab5dee907d4e0dd02b3df5d8c054
 ### pendientes 
 1- Instalacion de ttf-mscorefonts - DONE
 2- Modificar la instalacion del tomcat en el contenedor 9.0.75 -DONE 
-3- sumar la config de la DB de postgress 
+3- sumar la config de la DB de postgress - DONE
 4- Al finalizar la copia de demo, ajustar a nuestro docker. -DONE
