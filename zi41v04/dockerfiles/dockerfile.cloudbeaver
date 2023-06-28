@@ -1,0 +1,6 @@
+FROM dbeaver/cloudbeaver:latest
+LABEL authors="MC"
+RUN groupadd cloudbeaver
+RUN useradd -ms /bin/bash -g cloudbeaver cloudbeaver
+RUN chown -R cloudbeaver ./
+USER cloudbeaver

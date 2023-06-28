@@ -1,5 +1,4 @@
 #### IMPOSTAZIONI DBCONFIG PER COPIA DB TRA DUE ISTANZE ####
-#
 # CONFIGURAZIONE DATABASE DI DESTINAZIONE (POSTGRESQL)
 JDBCConnectionURL.1=jdbc:postgresql://db:5432/zucchetti
 JDBCDriver.1=org.postgresql.Driver
@@ -9,7 +8,7 @@ Instance.1=SERVLET1
 DefaultUserTimeout=3600
 #
 # CONFIGURAZIONE DATABASE DI ORIGINE (SQLSERVER)
-#JDBCConnectionURL.2=jdbc:sqlserver://192.168.11.145,49795;DatabaseName=AHRMOSCATELLI
+#JDBCConnectionURL.2=jdbc:sqlserver://sql,49795;DatabaseName=ZUCCHETTI
 #JDBCDriver.2=com.microsoft.sqlserver.jdbc.SQLServerDriver
 #UserName.2=sa
 #Password.2=sa.sa
