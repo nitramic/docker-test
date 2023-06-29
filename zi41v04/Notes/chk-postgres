@@ -1,0 +1,33 @@
+Ver si los comandos generados para el init de la DATABASE estan ok
+crear una database para el inici de demo (en pos de estandarizar las 2 instalaciones)
+
+# para luego sunar al init del plsql de docker
+# CREATE DATABASE ahrw41_demo;
+
+
+
+#### comandos #####
+
+En postgres corriendo el cliente psql
+List databases
+\l
+
+List Users
+\du
+
+cambiar password en la base
+\password
+
+para conectarme a una base (en este caso la demo)
+\c ahrw41_demo
+You are now connected to database "ahrw41_demo" as user "postgres".
+
+#### Para ver la version de la base de datos fuera del user postgres ####
+sudo -u postgres psql -c "SELECT version();"
+
+#################
+## OTRAS NOTAS ##
+#################
+Ver si tanto en el template como en la imagen de docker tienen los mismos valores la carpeta de resguardo de los datos
+1 - por standar
+2 - para verificar la config del contenedor como la base dentro de este y evitar problemas de discos efimeros de docker
