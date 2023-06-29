@@ -1,6 +1,6 @@
 #### IMPOSTAZIONI DBCONFIG PER COPIA DB TRA DUE ISTANZE ####
 # CONFIGURAZIONE DATABASE DI DESTINAZIONE (POSTGRESQL)
-JDBCConnectionURL.1=jdbc:postgresql://db:5432/demo
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/ahrw41_demo
 JDBCDriver.1=org.postgresql.Driver
 UserName.1=postgres
 Password.1=Info2023!

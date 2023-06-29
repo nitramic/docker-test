@@ -31,7 +31,9 @@ docker push infoservicenet/zucchetti:tmv04
 
 
 #Docker compose
-docker compose -f docker-compose.v04.local.yml up
+docker compose -f docker-compose.v04.local.yml up &
+#ò
+docker compose -f docker-compose.v04.hub.yml up &
 
 # Para verificar si esta corriendo el compose dentro de nuestra instalacion
 
