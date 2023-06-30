@@ -8,6 +8,8 @@ LABEL authors="MC"
 RUN bash -c "cp -avT /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manager"
 RUN apt update && apt-get install -y apt-transport-https
 RUN apt install -y ttf-mscorefonts-installer
+RUN ln -s /opt/java/openjdk /opt/jdk
+RUN ln -s /usr/local/tomcat /opt/tomcat
 COPY ./tm/setenv.sh $CATALINA_HOME/bin/setenv.sh
 COPY ./tm/tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
 COPY ./tm/manager.xml $CATALINA_HOME/conf/Catalina/localhost/manager.xml

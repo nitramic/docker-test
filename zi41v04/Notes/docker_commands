@@ -3,7 +3,6 @@ $ docker save infoservicenet/zucchetti:zi41pgv01 | gzip > zi41pgv01.tar.gz
 $ docker save infoservicenet/zucchetti:zi41tcv01 | gzip > zi41tcv01.tar.gz
 
 
-
 # Para hacer correr nuestro entorno con nuestras configs realizadas en el docker file
 sudo docker build --target db -t infoservicenet/zucchetti:pgv04 .
 sudo docker build --target app -t infoservicenet/zucchetti:tmv04 .
