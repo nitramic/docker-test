@@ -22,3 +22,5 @@ Using JRE_HOME:        /opt/jdk
 Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
 Using CATALINA_OPTS:
 Tomcat started.
+
+#se suma context.xml modificado para evitar errores de cache

@@ -4,8 +4,8 @@ export LANG=it_IT@euro
 
 JAVA_OPTS="-Djava.awt.headless=true \
 -Dfile.encoding=UTF-8 \
--Xms512m \
--Xmx4096m \
+-Xms256m \
+-Xmx2048m \
 -XX:MetaspaceSize=1024m \
 -XX:MaxMetaspaceSize=1024m \
 -XX:+HeapDumpOnOutOfMemoryError \
