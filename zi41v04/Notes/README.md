@@ -130,3 +130,35 @@ Filesystem      Size  Used Avail Use% Mounted on
 root@docker_test:/home/user/compose/zi41v04# df -h /
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda2        30G   19G  9.0G  69% /
+
+
+## Verificacion de FS dentro de los volumenes no efimeros
+1 - primero listo y localizo los datos de los volumenes dentro del FS
+
+root@docker01:/var/lib/docker/volumes/zi41v04_tomcat_data/_data# docker volume ls
+DRIVER    VOLUME NAME
+local     30687a9c90be4f78ac8971fcd24f9756484b26dd83743ddfdbf5fcc0d8b49be4
+local     portainer_data
+local     zi41v04_postgres_data
+local     zi41v04_tomcat_data
+root@docker01:/var/lib/docker/volumes/zi41v04_tomcat_data/_data# docker volume inspect zi41v04_postgres_data
+[
+    {
+        "CreatedAt": "2023-07-03T10:34:26Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.project": "zi41v04",
+            "com.docker.compose.version": "2.18.1",
+            "com.docker.compose.volume": "postgres_data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/zi41v04_postgres_data/_data",
+        "Name": "zi41v04_postgres_data",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+
+
+# luego miro dentro de los volumenes, en este caso son los de postgres y tomcat
+/var/lib/docker/volumes/zi41v04_tomcat_data/_data
+/var/lib/docker/volumes/zi41v04_postgres_data/_data

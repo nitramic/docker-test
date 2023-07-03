@@ -47,6 +47,25 @@ You are now connected to database "ahrw41_demo" as user "postgres".
 #### Para ver la version de la base de datos fuera del user postgres ####
 sudo -u postgres psql -c "SELECT version();"
 
+
+### Para ver donde estan alojados los datos de la base de datos
+1- primero tiramos este query para ver el oid de la base de datos.
+
+postgres=# SELECT oid, datname from pg_database;
+  oid  |   datname   
+-------+-------------
+ 13757 | postgres
+ 16384 | ahrw41_demo
+     1 | template1
+ 13756 | template0
+(4 rows)
+
+2- con el oid de la base de datos vamos a ver donde se aloja en el filesystem (En nuestro caso el 16384 que es ahrw41_demo) que estamos viendo dentro del contenedor
+
+postgres@c60468a8d8dc:~/data/base/16384$ ls -ld $PGDATA/base/16384
+drwx------ 2 postgres postgres 172032 Jul  3 10:10 /var/lib/postgresql/data/base/16384
+
+
 #################
 ## OTRAS NOTAS ##
 #################
