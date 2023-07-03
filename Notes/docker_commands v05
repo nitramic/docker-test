@@ -1,0 +1,61 @@
+# Para hacer bkp de las imagenes de docker y poder exportar el contenedor
+$ docker save infoservicenet/zucchetti:zi41pgv05 | gzip > zi41pgv05.tar.gz
+$ docker save infoservicenet/zucchetti:zi41tcv05 | gzip > zi41tcv05.tar.gz
+
+
+# Para hacer correr nuestro entorno con nuestras configs realizadas en el docker file
+docker build --target db -t infoservicenet/zucchetti:pgv05 .
+docker build --target app -t infoservicenet/zucchetti:tmv05 .
+
+# Luego crearles el tag para poder subirlos (en este caso a mi registry server)
+docker tag infoservicenet/zucchetti:tmv05 localhost:5000/zucchetti:tmv05
+docker tag infoservicenet/zucchetti:pgv05 localhost:5000/zucchetti:pgv05
+
+#Listar las imagenenes y hacer el push
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+infoservicenet/zucchetti   tmv04     39589d8cf48b   30 minutes ago   2.02GB
+localhost:5000/zucchetti   tmv04     39589d8cf48b   30 minutes ago   2.02GB
+infoservicenet/zucchetti   pgv04     9d47a14b9183   8 days ago       377MB
+localhost:5000/zucchetti   pgv04     9d47a14b9183   8 days ago       377MB
+registry                   2         4bb5ea59f8e0   13 days ago      24MB
+portainer/portainer-ce     latest    3d18fe6d6805   5 weeks ago      273MB
+
+
+Para hacer pull y push
+docker push localhost:5000/zucchetti:pgv05
+docker push localhost:5000/zucchetti:tmv05
+docker push infoservicenet/zucchetti:pgv05
+docker push infoservicenet/zucchetti:tmv05
+
+
+#Docker compose
+docker compose -f docker-compose.v04.local.yml up &
+#ò
+docker compose -f docker-compose.v04.hub.yml up &
+
+# Para verificar si esta corriendo el compose dentro de nuestra instalacion
+
+docker compose ls
+NAME                STATUS              CONFIG FILES
+zi41                running(2)          /home/user/compose/zi41/docker-compose.v03.yml
+
+# docker compose -f /home/user/compose/zi41/docker-compose.v03.yml ps
+NAME                IMAGE                            COMMAND                  SERVICE             CREATED             STATUS              PORTS
+zi_postgres         localhost:5000/zucchetti:pgv04   "docker-entrypoint.s…"   db                  6 days ago          Up 6 days           0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+zi_tomcat           localhost:5000/zucchetti:tmv04   "catalina.sh run"        app                 6 days ago          Up 6 days           0.0.0.0:8080->8080/tcp, :::8080->8080/tcp
+
+# Para borrar todos los datos del entorno generado
+$ docker compose -f docker-compose.v03.yml down --volumes --rmi local
+[+] Running 6/6
+ ✔ Container zi_tomcat        Removed                                                                                                                                                                                                   2.3s
+ ✔ Container zi_postgres      Removed                                                                                                                                                                                                   0.2s
+ ✔ Volume zi41_tomcat_data    Removed                                                                                                                                                                                                   1.3s
+ ✔ Volume zi41_postgres_data  Removed                                                                                                                                                                                                   1.7s
+ ✔ Network zi_frontend        Removed                                                                                                                                                                                                   0.3s
+ ✔ Network zi_backend         Removed      
+
+ # Para permitir una conexion de la db ya que esta desde el compose solo se conecta con la app en su propia red
+ # Esto suele ser util para administrar o hacer bkps/dumps desde afuera
+ # EN EL EJEMPLO DEBAJO ESTAMOS CONECTADO A LA RED FRONTEND (que tiene acceso desde fuera) AL SERVER POSTGRES, PARA VERIFICAR CON HERRAMIENTAS DEL TIPO PGADMIN O DBEAVER-CE 
+ docker network connect zi_frontend zi_postgres
