@@ -1,0 +1,11 @@
+# Este modelo es para la config de un vscode usando windows y docker, para ejecutar en el docker remoto
+
+1- Setear variable de entorno desde una CMD como admin
+
+setx docker_svr "192.168.30.23"
+set docker_svr
+ping %docker_svr%
+
+2- generar y portar las keys de ssh para poder ejecutar de forma remota.
+Nota: Se puede hacer con npipe???
+
