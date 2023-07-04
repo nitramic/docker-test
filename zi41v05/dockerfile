@@ -24,3 +24,4 @@ COPY ./tm/ahrw41_demo $CATALINA_HOME/webapps/ahrw41_demo
 COPY ./tm/DBConfig $CATALINA_HOME/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
 RUN ln /opt/phantomjs/bin/phantomjs /opt/tomcat/webapps/ahrw41_demo/WEB-INF/phantomjs
 RUN chmod 777 -R /opt/phantomjs
+RUN ln -s /opt/tomcat/webapps/ahrw41_demo /usr/local/tomcat/webapps/ROOT
