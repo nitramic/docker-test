@@ -9,3 +9,11 @@ ping %docker_svr%
 2- generar y portar las keys de ssh para poder ejecutar de forma remota.
 Nota: Se puede hacer con npipe???
 
+###### sino con bash de git para windows #docker 
+# (Esto se hace para usar el ssh keyscan, ya que el cliente ssh que trae windows no logre hacer que fucnione con esta opcion)
+
+$ ssh-keyscan -H $docker_svr >~/.ssh/known_hosts
+
+$ context create docker_svr --description "Server Docker" --docker host=ssh://user@"$docker_svr"
+
+$ docker context use docker_svr
