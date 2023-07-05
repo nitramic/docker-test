@@ -69,6 +69,8 @@ drwx------ 2 postgres postgres 172032 Jul  3 10:10 /var/lib/postgresql/data/base
 #################
 ## OTRAS NOTAS ##
 #################
-Ver si tanto en el template como en la imagen de docker tienen los mismos valores la carpeta de resguardo de los datos
+Ver si tanto en el template como en la imagen de docker tienen los mismos valores la carpeta de resguardo de los datos - DONE
 1 - por standar
-2 - para verificar la config del contenedor como la base dentro de este y evitar problemas de discos efimeros de docker
+2 - para verificar la config del contenedor como la base dentro de este y evitar problemas de discos efimeros de docker -DONE
+RTA: Los volumenes configurados con compose, cuando se hace el down, quedan en la maquina, tambien se puede hacer un stop/start o restart y los datos quedan, con volume inspect podemos la ruta del volumen y "tocar" los files que sean necesarios, de la unica manera de borrarlos es, al hacer el dow, especificar "--volumes" para que borre la data y con "--rmi local" para que borre la imagen del contenedor, asi y todo es necesario hacer un "docker system prune" para que no queden binarios dentro de la plataforma
+NOTA: Probar de hacer esto como una medida adicional de disaster recovery.
