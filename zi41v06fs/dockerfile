@@ -1,0 +1,8 @@
+FROM postgres:14-bullseye AS db
+LABEL authors="MC"
+
+
+FROM tomcat:9.0.75-jdk8-temurin-jammy AS app
+LABEL authors="MC"
+
+
