@@ -39,3 +39,18 @@ uso de Datastore
 Latencia de datastore
 Se puede tomar datos fisicos del BAREMETAL en los provedores cloud o en el on-prem?
 Temp/fuentes/discos Fisicos (SMART)/Placa Raid (Cache+discos)/CPU
+
+Para ir acomodando
+https://github.com/influxdata/telegraf/blob/master/plugins/inputs/postgresql_extensible/README.md
+
+
+### Mas cosas piolas 
+Mirar 
+https://github.com/influxdata/telegraf
+
+vsphere
+https://github.com/influxdata/telegraf/tree/master/plugins/inputs/vsphere
+
+PF sense 
+https://github.com/influxdata/telegraf/blob/master/plugins/inputs/pf/README.md
+
