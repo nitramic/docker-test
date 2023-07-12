@@ -54,3 +54,22 @@ https://github.com/influxdata/telegraf/tree/master/plugins/inputs/vsphere
 PF sense 
 https://github.com/influxdata/telegraf/blob/master/plugins/inputs/pf/README.md
 
+
+
+# RESOLVER
+## Dependencias
+donde va (o como se instala) el plugin execd
+
+Instalacion de telegraf en un BARE-METAL
+https://docs.logz.io/shipping/prometheus-sources/apache-tomcat-telegraf.html
+
+## Tomcat
+
+https://github.com/influxdata/telegraf/blob/master/plugins/inputs/tomcat/README.md
+https://docs.logz.io/shipping/prometheus-sources/apache-tomcat-telegraf.html
+
+https://logit.io/sources/configure/telegraf_apache_tomcat/
+modificado el conf de telegraf para que empiece a tomar muestras de tomcat
+[[inputs.tomcat]]
+
+
