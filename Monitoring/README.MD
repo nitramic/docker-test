@@ -73,3 +73,16 @@ modificado el conf de telegraf para que empiece a tomar muestras de tomcat
 [[inputs.tomcat]]
 
 
+### SETUP ROADMAP
+instalar en el contenedor python3 y pip3
+apt install python3
+apt install python3-pip
+
+luego instalar los modulos para este servicio Ad-Hoc
+upgrade de pip (por si las dudas)
+pip install --upgrade pip
+
+pip install -r requeriments.txt
+
+con todos los modulos instalados copiar dentro del container los files 
+
