@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   telegraf:
-    image: telegraf
+    image: telegrafv02
     container_name: telegraf
     restart: always
     volumes:
