@@ -86,3 +86,17 @@ pip install -r requeriments.txt
 
 con todos los modulos instalados copiar dentro del container los files 
 
+## Con Py 2.7 (FUNCIONOOOO!!!!!)
+Instalar en el contenedor python2.7 (ya sabemos que esta EOL) solo es una prueba para identificar un error al correr con Py3.
+apt install python
+python --version
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+python get-pip.py
+pip --version
+
+Copiar al contenerdo el file requeriments para hacer la instalacion en un "bundle"
+python -m pip install -r requeriments.txt
+
+### Store de secret y encriptacion
+https://github.com/influxdata/telegraf/blob/master/plugins/inputs/postgresql/README.md
+https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md#secret-store-secrets
