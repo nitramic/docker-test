@@ -1,16 +1,14 @@
 version: '3.6'
 services:
-  telegraf:
-    image: telegrafv02
-    container_name: telegraf
+  telegraf03:
+    image: telegrafv03
+    container_name: telegraf03
     restart: always
     volumes:
-    - ./telegraf.conf:/etc/telegraf/telegraf1.conf:ro
-    - ./telegraf.conf:/etc/telegraf/telegraf2.conf:ro
-    - ./telegraf.conf:/etc/telegraf/telegraf3.conf:ro
-    depends_on:
-      - influxdb
+    - /var/run/docker.sock:/var/run/docker.sock
     links:
       - influxdb
     ports:
     - '8125:8125'
+    networks:
+      - monitorv02_py27_default
