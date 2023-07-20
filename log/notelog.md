@@ -30,6 +30,7 @@ https://github.com/docker-library/tomcat/blob/ 87d54ab5dee907d4e0dd02b3df5d8c054
 instalar TIG - DONE
 Verificar datos - DONE
 postgres - DONE
+Separar en diferentes instancias las configs de telegraf (esto es por el limite de buffer y para mantener organizado los queries)
 VMWare
     monitoreo realtime 
     monitoreo historico
