@@ -1,3 +1,7 @@
+# Version base
+https://hub.docker.com/layers/library/tomcat/9.0.75-jdk8-temurin-jammy/images/sha256-4e0abd034b3c915780b9af42eecfd717ab77a9eb035a5c3720809e6ecb36144e?context=explore
+#
+
 ## se hace modificacion en setenv.sh, ya que catalina sh refiere a crear y mantener todas las modificaiones en es file
 ## EJ: Inicio de tomcat antes de los cambios
 
