@@ -1,0 +1,2 @@
+docker compose -f /home/user/compose/zi41v05/docker-compose.yml down --volumes --rmi local
+docker compose -f /home/user/compose/monitorv02_py2.7/docker-compose.yml down --volumes --rmi local
