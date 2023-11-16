@@ -1,0 +1,21 @@
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/ahrw41_demo
+JDBCDriver.1=org.postgresql.Driver
+UserName.1=postgres
+Password.1=Info2023!
+Instance.1=SERVLET1
+DefaultUserTimeout=3600
+
+#Password insertado (luego ver de encriptar la password)
+
+cat << EOF > $CATALINA_HOME/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/${POSTGRES_DB}
+UserName.1=${POSTGRES_USER}
+Password.1=${POSTGRES_PW}
+EOF
+
+tmp
+cat << EOF > DBConfig.txt
+JDBCConnectionURL.1=jdbc:postgresql://db:5432/${POSTGRES_DB}
+UserName.1=${POSTGRES_USER}
+Password.1=${POSTGRES_PW}
+EOF

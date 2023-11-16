@@ -1,0 +1,12 @@
+#Passwordless (AZ Example)
+cat << EOF > src/main/resources/application.properties
+url=jdbc:postgresql://${AZ_DATABASE_SERVER_NAME}.postgres.database.azure.com:5432/${AZ_DATABASE_NAME}?sslmode=require&authenticationPluginClassName=com.azure.identity.extensions.jdbc.postgresql.AzurePostgresqlAuthenticationPlugin
+user=${AZ_POSTGRESQL_AD_NON_ADMIN_USERNAME}@${AZ_DATABASE_SERVER_NAME}
+EOF
+
+#Password insertado (luego ver de encriptar la password)
+cat << EOF > src/main/resources/application.properties
+url=jdbc:postgresql://${AZ_DATABASE_SERVER_NAME}.postgres.database.azure.com:5432/${AZ_DATABASE_NAME}?sslmode=require
+user=${AZ_POSTGRESQL_NON_ADMIN_USERNAME}
+password=${AZ_POSTGRESQL_NON_ADMIN_PASSWORD}
+EOF
