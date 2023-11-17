@@ -14,6 +14,11 @@ services:
       - frontend
     volumes:
       - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
+    command: ["cat << EOF > /usr/local/tomcat/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
+      JDBCConnectionURL.1=jdbc:postgresql://db:5432/${POSTGRES_DB}
+      UserName.1=${POSTGRES_USER}
+      Password.1=${POSTGRES_PW}
+      EOF"]
 
 networks:
   frontend:
