@@ -1,0 +1,29 @@
+version: '2'
+services:
+  app:
+    container_name: ${CLIENT}
+    image: infoservicenet/zucchetti:tmv05
+    restart: on-failure:3
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB} 
+    ports:
+      - ${PORT}:8080
+    networks:
+      - frontend
+    volumes:
+      - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
+
+networks:
+  frontend:
+    name: ${CLIENT}
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${STAGE_NETWORK_PREFIX}/24
+  
+volumes:
+  tomcat_data:
+    external: false
