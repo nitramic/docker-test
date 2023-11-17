@@ -1,4 +1,4 @@
-FROM tomcat:9.0.76-jdk8-temurin-jammy
+FROM tomcat:9.0-jdk8-temurin-jammy
 COPY configs/tomcat-users.xml /conf/tomcat-users.xml
 COPY configs/manager.xml conf/Catalina/localhost/manager.xml
 COPY configs/host-manager.xml conf/Catalina/localhost/host-manager.xml
