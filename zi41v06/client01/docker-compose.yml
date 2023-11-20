@@ -14,12 +14,18 @@ services:
       - frontend
     volumes:
       - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
-    command: ["cat << EOF > /usr/local/tomcat/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
+
+  app-config:
+    image: infoservicenet/zucchetti:tmv05
+    depends_on:
+      - app
+    restart: "no"
+    entrypoint: [ "sh", "-c", "cat << EOF > ./usr/local/tomcat/webapps/ahrw41_demo/WEB-INF/classes/DBConfig.txt
       JDBCConnectionURL.1=jdbc:postgresql://db:5432/${POSTGRES_DB}
       UserName.1=${POSTGRES_USER}
       Password.1=${POSTGRES_PW}
-      EOF"]
-
+      EOF"]   
+      #Armar script en bahs o sh y probar > Probar este punto, no se ejecuta.
 networks:
   frontend:
     name: ${CLIENT}
