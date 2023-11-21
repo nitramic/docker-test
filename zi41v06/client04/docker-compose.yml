@@ -2,7 +2,7 @@ version: '2'
 services:
   app:
     container_name: ${CLIENT}
-    image: infoservicenet/zucchetti:tmv05
+    image: infoservicenet/zucchetti:tmv06
     restart: on-failure:3
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -14,7 +14,8 @@ services:
       - frontend
     volumes:
       - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
-
+    command: /bin/bash -c "DBConfig.sh && catalina.sh run"
+    
 networks:
   frontend:
     name: ${CLIENT}
