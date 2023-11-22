@@ -1,6 +1,6 @@
 services:
   db:
-    container_name: zi_postgres
+    container_name: db
     image: infoservicenet/zucchetti:pgv05
     restart: on-failure:3
     environment:
@@ -16,7 +16,7 @@ services:
 
 networks:
   backend:
-    name: zi_backend  
+    name: backend  
 
 volumes:
   postgres_data:

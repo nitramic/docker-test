@@ -21,7 +21,7 @@ COPY ./tm/catalina.properties $CATALINA_HOME/conf/
 COPY ./tm/postgresql-42.6.0.jar $CATALINA_HOME/lib/postgresql-42.6.0.jar
 COPY ./tm/phantomjs-2.1.1-linux-x86_64 $CATALINA_HOME/webapps/ahrw41_demo/WEB-INF/phantomjs
 COPY ./tm/ahrw41_demo $CATALINA_HOME/webapps/ahrw41_demo
-COPY ./tm/DBConfig $CATALINA_HOME/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
+# COPY ./tm/DBConfig $CATALINA_HOME/webapps/ahrw41_demo/WEB-INF/classes/DBConfig
 COPY ./tm/DBConfig.sh /usr/local/tomcat/bin/
 RUN ln /opt/phantomjs/bin/phantomjs /opt/tomcat/webapps/ahrw41_demo/WEB-INF/phantomjs
 RUN chmod 777 -R /opt/phantomjs
