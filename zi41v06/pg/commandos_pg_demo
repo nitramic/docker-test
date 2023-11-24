@@ -1,0 +1,71 @@
+docker compose -f ./database/docker-compose.yml up -d
+docker exec -it db bash
+
+sudo -u postgres createuser --interactive
+
+psql -h localhost -U postgres
+
+ \l #lista las bases
+CREATE DATABASE client01;
+ \l
+  CREATE USER cloud_user WITH PASSWORD 'cloud_user';
+ GRANT ALL PRIVILEGES ON DATABASE cloud_user TO cloud_user;
+ 
+Ejecutado:
+
+CREATE DATABASE client01db;
+CREATE DATABASE client02db;
+CREATE DATABASE client03db;
+CREATE DATABASE client04db;
+CREATE DATABASE client05db;
+
+CREATE USER client01usr WITH PASSWORD 'client01pwd';
+CREATE USER client02usr WITH PASSWORD 'client02pwd';
+CREATE USER client03usr WITH PASSWORD 'client03pwd';
+CREATE USER client04usr WITH PASSWORD 'client04pwd';
+CREATE USER client05usr WITH PASSWORD 'client05pwd';
+
+GRANT ALL PRIVILEGES ON DATABASE client01db TO client01usr;
+GRANT ALL PRIVILEGES ON DATABASE client02db TO client02usr;
+GRANT ALL PRIVILEGES ON DATABASE client03db TO client03usr;
+GRANT ALL PRIVILEGES ON DATABASE client04db TO client04usr;
+GRANT ALL PRIVILEGES ON DATABASE client05db TO client05usr;
+
+
+######### Detalle del grant 
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ TAYLOR    | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client01  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client02  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client03  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client04  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client05  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+(9 rows)
+
+postgres=# GRANT ALL PRIVILEGES ON DATABASE client01 TO postgres;
+GRANT
+postgres=# GRANT ALL PRIVILEGES ON DATABASE client01 TO postgres;^C
+postgres=# \l
+                                 List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |   Access privileges
+-----------+----------+----------+------------+------------+-----------------------
+ TAYLOR    | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client01  | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =Tc/postgres         +
+           |          |          |            |            | postgres=CTc/postgres
+ client02  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client03  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client04  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ client05  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres          +
+           |          |          |            |            | postgres=CTc/postgres
