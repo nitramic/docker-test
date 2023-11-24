@@ -5,4 +5,4 @@ node_modules
 *.ipynb
 jupyter
 __pycache__
-.env
+
