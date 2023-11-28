@@ -1,0 +1,35 @@
+version: '2'
+services:
+  app:
+    container_name: ${CLIENT}
+    image: infoservicenet/zucchetti:tmv06
+    restart: on-failure:3
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_IP=${POSTGRES_IP}
+    ports:
+      - ${PORT}:8080
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
+    command: /bin/bash -c "DBConfig.sh && catalina.sh run"
+    
+networks:
+  frontend:
+    name: ${CLIENT}
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${STAGE_NETWORK_PREFIX}/24
+  backend:
+    name: backend
+    external: true
+
+volumes:
+  tomcat_data:
+    external: false
