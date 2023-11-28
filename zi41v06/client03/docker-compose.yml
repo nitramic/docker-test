@@ -4,6 +4,8 @@ services:
     container_name: ${CLIENT}
     image: infoservicenet/zucchetti:tmv06
     restart: on-failure:3
+    mem_limit: 4096M
+    cpus: 0.5
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PW}

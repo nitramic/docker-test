@@ -6,12 +6,10 @@ services:
     restart: on-failure:3
     mem_limit: 4096M
     cpus: 0.5
-    secrets:
-      - test_secrets
     environment:
       - HOSTNAME=${CLIENT}
       - POSTGRES_USER=${CLIENT}usr
-      - POSTGRES_PASSWORD: /run/secrets/test_secrets
+      - POSTGRES_PASSWORD=${CLIENT}pwd
       - POSTGRES_DB=${CLIENT}db
       - POSTGRES_IP=${POSTGRES_IP}
     ports:
@@ -38,7 +36,3 @@ networks:
 volumes:
   tomcat_data:
     external: false
-
-secrets:
-  test_secrets:
-    file: ./test_secrets.txt
