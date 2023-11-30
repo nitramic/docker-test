@@ -6,8 +6,6 @@ services:
     restart: on-failure:3
     mem_limit: 4096M
     cpus: 0.5
-    storage_opt:
-      size=5G
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PW}
