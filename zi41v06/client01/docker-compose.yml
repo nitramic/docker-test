@@ -5,7 +5,7 @@ services:
     image: infoservicenet/zucchetti:tmv06
     restart: on-failure:3
     mem_limit: 4096M
-    cpus: 0.5
+    cpus: 0-1
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PW}
@@ -34,4 +34,4 @@ networks:
 
 volumes:
   tomcat_data:
-    external: false
+    name: ${CLIENT}_data
