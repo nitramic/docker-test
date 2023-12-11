@@ -18,6 +18,7 @@ services:
       - backend
     volumes:
       - tomcat_data:/usr/local/tomcat/${CLIENT}:rw
+      - tmpfs:/tmp:rw
     command: /bin/bash -c "DBConfig.sh && catalina.sh run"
     
 networks:
@@ -35,3 +36,9 @@ networks:
 volumes:
   tomcat_data:
     name: ${CLIENT}_data
+  tmpfs:
+    driver: local
+    driver_opts:
+      o: "size=$TMPFS_SIZE"
+      device: tmpfs
+      type: tmpfs
