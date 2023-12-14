@@ -1,0 +1,7 @@
+Problema: Al generar el contenedor, el file DBConfig, el cual es interpretado por el dirver JDBC para postgres no generaba el archivo con la config necesaria
+en el ambiente, ya que el mismo debe tomar el valor de las variables de entorno y este quedaba con la variable estampada y no su valor.
+
+Verificacion: el file solo es leido para ser cargado e interpretado por el driver, por lo cual no toma en cosideracion la declaracion de la variables en el file.
+
+Solucion(Probar):   Se usa y se ejecuta el comando cat para creacion del file al momento de ejecutar el compose, para que no sea necesario hacer el buil de la imagen
+                    cada vez que se quiera levantar un nuevo user (ademas de ser poco "performante"?)

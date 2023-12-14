@@ -5,4 +5,3 @@ node_modules
 *.ipynb
 jupyter
 __pycache__
-00.nosync
